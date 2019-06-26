@@ -1,18 +1,30 @@
-'use strict'
-
 const Hapi = require('hapi');
+
+require('dotenv').config();
 
 async function init () {
   const server = Hapi.server({
-    port: 3000,
-    host: 'localhost',
+    port: process.env.PORT || 3000,
+    host: process.env.HOST || 'localhost',
   });
+
+  await server.register({ plugin: require('./plugins/auth') });
 
   server.route({
     method: 'GET',
     path:'/',
+    options: { auth: false },
     handler: (request, h) => {
         return 'Hello World!';
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path:'/dashboard',
+    options: { auth: false },
+    handler: (request, h) => {
+        return 'Dashboard';
     }
   });
 
