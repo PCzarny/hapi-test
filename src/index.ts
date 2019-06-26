@@ -1,20 +1,21 @@
-const Hapi = require('hapi');
+import * as hapi from "hapi";
+import authPlugin from './plugins/auth';
 
 require('dotenv').config();
 
 async function init () {
-  const server = Hapi.server({
+  const server: hapi.Server = new hapi.Server({
     port: process.env.PORT || 3000,
     host: process.env.HOST || 'localhost',
   });
 
-  await server.register({ plugin: require('./plugins/auth') });
+  await server.register(authPlugin);
 
   server.route({
     method: 'GET',
     path:'/',
     options: { auth: false },
-    handler: (request, h) => {
+    handler: (request: hapi.Request, reply: hapi.ResponseToolkit) => {
         return 'Hello World!';
     }
   });
@@ -23,7 +24,7 @@ async function init () {
     method: 'GET',
     path:'/dashboard',
     options: { auth: false },
-    handler: (request, h) => {
+    handler: (request: hapi.Request, reply: hapi.ResponseToolkit) => {
         return 'Dashboard';
     }
   });

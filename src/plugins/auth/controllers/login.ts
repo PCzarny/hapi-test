@@ -1,4 +1,4 @@
-function controller (request, h) {
+export default function controller (request, h) {
   return ` <html>
       <head>
           <title>Login page</title>
@@ -12,5 +12,3 @@ function controller (request, h) {
       </body>
   </html>`;
 }
-
-module.exports = controller;

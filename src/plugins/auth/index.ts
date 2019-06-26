@@ -1,4 +1,5 @@
-const validate = require('./useCases/validateSession');
+import { validateSession } from './useCases/validateSession';
+import router from './router';
 
 async function register (server, options) {
   // -------- Basic auth alternative -----------
@@ -18,15 +19,15 @@ async function register (server, options) {
         ttl: 7 * 24 * 60 * 60 * 1000 // 1 week session
     },
     redirectTo: '/login',
-    validateFunc: validate.validateSession
+    validateFunc: validateSession
   });
 
   server.auth.default('session');
 
-  server.route(require('./router'))
+  server.route(router)
 }
 
-module.exports = {
+export default {
   name: 'auth',
   version: '1.0.0',
   multiple: false,

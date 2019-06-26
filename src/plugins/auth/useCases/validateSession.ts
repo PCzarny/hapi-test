@@ -5,7 +5,7 @@ const users = [{
   id: '2133d32a'
 }];
 
-async function validateSession (request, session) {
+export async function validateSession (request, session) {
   const account = await users.find(
       (user) => (user.id === session.id)
   );
@@ -17,5 +17,3 @@ async function validateSession (request, session) {
 
   return { valid: true, credentials: account };
 }
-
-module.exports = { validateSession };

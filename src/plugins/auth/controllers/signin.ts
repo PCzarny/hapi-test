@@ -7,7 +7,7 @@ const users = [{
   id: '2133d32a'
 }];
 
-async function controller (request, h) {
+export default async function controller (request, h) {
   const { username, password } = request.payload;
   const account = users.find(
       (user) => user.username === username
@@ -20,5 +20,3 @@ async function controller (request, h) {
   request.cookieAuth.set({ id: account.id });
   return h.redirect('/dashboard');
 }
-
-module.exports = controller;
