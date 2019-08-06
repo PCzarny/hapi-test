@@ -9,6 +9,7 @@ async function init () {
   });
 
   await server.register({ plugin: require('./plugins/auth') });
+  await server.register({ plugin: require('./plugins/users') });
 
   server.route({
     method: 'GET',
