@@ -1,5 +1,10 @@
+import "reflect-metadata";
+
 import * as hapi from "hapi";
+import { createConnection } from "typeorm";
+
 import authPlugin from './plugins/auth';
+import usersPlugin from './plugins/users';
 
 require('dotenv').config();
 
@@ -9,7 +14,11 @@ async function init () {
     host: process.env.HOST || 'localhost',
   });
 
+
+  await createConnection();
+
   await server.register(authPlugin);
+  await server.register(usersPlugin);
 
   server.route({
     method: 'GET',

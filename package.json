@@ -5,23 +5,30 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./dist/index.js",
+    "start": "ts-node src/index.ts",
     "start:dev": "nodemon -e ts --exec 'npm run compile'",
-    "compile": "tsc && node ./dist/index.js"
+    "build": "tsc",
+    "compile": "tsc && node ./dist/index.js",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js"
   },
   "author": "Piotr Czarny",
   "license": "ISC",
   "dependencies": {
     "@hapi/basic": "^5.1.0",
+    "@hapi/boom": "^7.4.3",
     "@hapi/cookie": "^10.1.0",
     "bcrypt": "^3.0.6",
     "dotenv": "^8.0.0",
-    "hapi": "^18.1.0"
+    "hapi": "^18.1.0",
+    "pg": "^7.12.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.18"
   },
   "devDependencies": {
     "@types/hapi": "^18.0.2",
     "@types/node": "^12.7.1",
     "nodemon": "^1.19.1",
+    "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   }
 }

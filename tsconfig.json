@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "allowJs": false,
-    "target": "es6",
-    "sourceMap": true,
+    "allowJs": true,
+    "lib": [
+      "es5",
+      "es6"
+    ],
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-  },
-  "include": [
-    "./src/**/*",
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+    "outDir": "./dist",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+  }
 }
