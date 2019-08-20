@@ -1,6 +1,7 @@
-import loginController from './controllers/login';
-import signinController from './controllers/signin';
-import signoutController from './controllers/signout';
+import loginController from './controllers/views/login';
+import signinController from './controllers/api/signin';
+import signoutController from './controllers/api/signout';
+import signupController from './controllers/api/signup';
 
 export default [
   {
@@ -19,5 +20,11 @@ export default [
     method: 'POST',
     path: '/signout',
     handler: signoutController,
+  },
+  {
+    method: 'POST',
+    path: '/signup',
+    options: { auth: false },
+    handler: signupController,
   }
 ];
