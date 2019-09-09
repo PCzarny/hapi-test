@@ -18,7 +18,7 @@ async function init () {
   await createConnection();
 
   await server.register(authPlugin);
-  await server.register(usersPlugin);
+  await server.register(usersPlugin, { routes: { prefix: '/users' } });
 
   server.route({
     method: 'GET',

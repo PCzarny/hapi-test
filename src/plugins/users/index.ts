@@ -1,22 +1,7 @@
-function getUser (request, h) {
-  return 'Lalal'
-}
+import router from './router';
 
-async function register (server, options) {
-  server.route([
-    {
-      method: 'GET',
-      path: '/{id}',
-      handler: getUser,
-      config: {
-        auth: {
-          access: {
-            scope: 'user',
-          },
-        },
-      }
-    }
-  ])
+function register (server, options) {
+  server.route(router)
 }
 
 export default {

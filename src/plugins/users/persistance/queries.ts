@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm";
-import { User } from "../model";
+import { User } from "../models/user";
 
 export async function getUserById (id) {
   const userRepository = getRepository(User);

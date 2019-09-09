@@ -3,7 +3,7 @@ module.exports = {
   "url": process.env.DB_URI,
   "synchronise": true,
   "logging": false,
-  "entities": ["src/plugins/**/model.ts"],
+  "entities": ["src/plugins/**/models/*.ts"],
   "migrations": ["src/migration/**/*.ts"],
   "subscribers": ["src/subscriber/**/*.ts"],
   "cli": {
